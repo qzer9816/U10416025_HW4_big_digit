@@ -35,4 +35,34 @@ public class MyMultiply {
             data[i] = (char) (data[i] - data[len - 1 - i]);
         }
     }
+    
+     public static void multiply(char a[], int alen, char b[], int blen) {  
+        //兩數乘積位數不會超過成數位數和+3位
+        int csize = alen + blen + 3;  
+	//定義乘積數陣列
+        int[] c = new int[csize];  
+        //陣列填充0
+        for (int ii = 0; ii < csize; ii++) {  
+            c[ii] = 0;  
+        }  
+        //對齊後逐位相乘
+        for (int j = 0; j < blen; j++) {  
+            for (int i = 0; i < alen; i++) {  
+                c[i + j] +=  Integer.parseInt(String.valueOf(a[i]))* Integer.parseInt(String.valueOf(b[j]));  
+            }  
+        }  
+        int m = 0;  
+        //進位處理
+        for (m = 0; m < csize; m++) {  
+            int carry = c[m] / 10;  
+            c[m] = c[m] % 10;  
+            if (carry > 0)  
+                c[m + 1] += carry;  
+        }  
+        //找到最高位
+        for (m = csize - 1; m >= 0;) {  
+            if (c[m] > 0)  
+                break;  
+            m--;  
+        }  
 }

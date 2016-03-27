@@ -64,5 +64,13 @@ public class MyMultiply {
             if (c[m] > 0)  
                 break;  
             m--;  
-        }  
+        }
+        
+        //由最高位開始印出乘積
+        System.out.print("乘積:");
+        for (int n = 0; n <= m; n++) {
+            System.out.print(c[m - n]);
+        }
+        System.out.println("");
+     }
 }
